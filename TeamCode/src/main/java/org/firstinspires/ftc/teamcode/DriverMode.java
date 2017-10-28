@@ -17,6 +17,8 @@ public class DriverMode extends OpMode {
 
     DcMotor leftmotor = null;   // Hardware Device Object
     DcMotor rightmotor = null;  // Hardware Device Object
+    DcMotor frontleftmotor = null;   // Hardware Device Object
+    DcMotor frontrightmotor = null;  // Hardware Device Object
     DcMotor liftmotor = null;   // Hardware Device Object
     Servo leftservo = null;         // Hardware Device Object
     Servo rightservo = null;         // Hardware Device Object
@@ -67,6 +69,9 @@ public class DriverMode extends OpMode {
         leftmotor = hardwareMap.dcMotor.get("left motor");
         leftmotor.setDirection(DcMotor.Direction.REVERSE);
         rightmotor = hardwareMap.dcMotor.get("right motor");
+        frontleftmotor = hardwareMap.dcMotor.get("front left motor");
+        frontleftmotor.setDirection(DcMotor.Direction.REVERSE);
+        frontrightmotor = hardwareMap.dcMotor.get("front right motor");
         // get the motor objects created
         liftmotor = hardwareMap.dcMotor.get("lift");
         // Get the servo object created
@@ -207,6 +212,8 @@ public class DriverMode extends OpMode {
         // set the power of the motor to the stick value multiplied by the adjustment
         leftmotor.setPower(left * driveadjustment);
         rightmotor.setPower(right * driveadjustment);
+        frontleftmotor.setPower(left * driveadjustment);
+        frontrightmotor.setPower(right * driveadjustment);
         liftmotor.setPower(lift * liftadjustment);
 
         // Tell the driver
